@@ -8,9 +8,17 @@
 \headcommand {\beamer@framepages {5}{5}}
 \headcommand {\slideentry {0}{0}{5}{6/7}{}{0}}
 \headcommand {\beamer@framepages {6}{7}}
-\headcommand {\beamer@partpages {1}{7}}
-\headcommand {\beamer@subsectionpages {1}{7}}
-\headcommand {\beamer@sectionpages {1}{7}}
-\headcommand {\beamer@documentpages {7}}
-\headcommand {\gdef \inserttotalframenumber {4}}
-\headcommand {\tudbeamersetpagenumberwidths {4}{8}}
+\headcommand {\slideentry {0}{0}{6}{8/10}{}{0}}
+\headcommand {\beamer@framepages {8}{10}}
+\headcommand {\slideentry {0}{0}{7}{11/11}{}{0}}
+\headcommand {\beamer@framepages {11}{11}}
+\headcommand {\slideentry {0}{0}{8}{12/13}{}{0}}
+\headcommand {\beamer@framepages {12}{13}}
+\headcommand {\slideentry {0}{0}{9}{14/15}{}{0}}
+\headcommand {\beamer@framepages {14}{15}}
+\headcommand {\beamer@partpages {1}{15}}
+\headcommand {\beamer@subsectionpages {1}{15}}
+\headcommand {\beamer@sectionpages {1}{15}}
+\headcommand {\beamer@documentpages {15}}
+\headcommand {\gdef \inserttotalframenumber {8}}
+\headcommand {\tudbeamersetpagenumberwidths {8}{16}}
