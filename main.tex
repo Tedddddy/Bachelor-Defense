@@ -163,4 +163,90 @@
     \item A neighbourhood model is a structure $M = (X, \tau, \upsilon)$, where $\upsilon$ is a valuation of the form $\upsilon : Prop \rightarrow 2^X$
   \end{itemize}
 \end{frame}
+
+\begin{frame}
+  \frametitle{Neighbourhood semantics}
+  Let $M = (X,\tau,\upsilon)$ be a neighbourhood model and $x \in X$ a point in $M$. A formula being true at x is inductively defined as:
+      \begin{align*}
+        M,x &\Vdash p &&\text{iff } x \in V(p)\\
+        M,x &\Vdash \bot &&\text{never } \\
+        M,x &\Vdash \neg \phi &&\text{iff } M,x \nVdash \phi\\
+        M,x &\Vdash \phi \lor \psi &&\text{iff } M,x \vDash \phi \lor M,x \vDash \psi\\
+        M,x &\Vdash \Box \phi &&\text{iff } \exists V \in \tau(x) \forall y \in V : M,y \models \phi
+    \end{align*}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Example}
+      Assume $\phi = \Box p$. Let $W = \{1,2,3\}$, $V(p) = \{1,2\}$ and 
+    \[
+            \tau(x) = 
+            \begin{cases}
+                1 \rightarrow \{\{1\}, \{3\}, W\} \\
+                2 \rightarrow \{\{2\}, \{1,2\}, W\} \\
+                3 \rightarrow \{\{3\}, \{1,3\}\}
+            \end{cases}
+    \] 
+    \centering
+      \includegraphics[width=0.55\textwidth]{Example3.pdf}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Multimodal logic and product of frames}
+  \begin{itemize}
+    \item Mutlimodal logic allows us to reason about knowledge,time etc. simultaneously 
+    \item for example we can combine temporal and epistemic logic to reason about "when does the agent knows something" (product of frames) \pause
+    \item horizontal and vertical relation allows us to reason in one dimension, for example we a fix time point and ask what does the agent knows at that time?
+    \item Let $F = (W, R_1)$ and $G = (V, R_2)$. We define the Kripke product on $W \times V$as : 
+      $$(w,v)R_1'(w',v') \mbox{ iff } wR_1w' \mbox{ and } v = v' \text{  (horizontal)}$$
+      $$(w,v)R_2  '(w',v') \mbox{ iff } w = w' \mbox{ and } vR_2v' \text{(vertical)}$$
+    %\item Let $L_1$ and $L_2$ be two modal logics with one modality $\Box$. Then the fusion
+    %is defined as: $$L_1 \otimes L_2 = K_2 + L_{1 \Box \rightarrow \Box_1} + L_{2 \Box \rightarrow \Box_2}$$
+   % \item we consider the product of frames to evaluate multimodal formulas
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Fusion}
+  \begin{itemize}
+    \item we can also combine logics with fusion
+    \item Let $L_1$ and $L_2$ be modal logics with one modality $\Box$. Then the fusion is defined as:
+    $$ L_1 \otimes L_2 = K_2 + L_{1(\Box \rightarrow \Box_1)} L_{2(\Box \rightarrow \Box_2)} $$ 
+
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Horizontal and Vertical topology}
+  \begin{itemize}
+    \item in topological space, horizontal and vertical can be also defined 
+  \end{itemize}
+  Let \( \mathcal{X} = (X, \chi) \) and \( \mathcal{Y} = (Y, \upsilon) \) be topological spaces and \( N \subseteq X \times Y \) \newline
+
+\begin{description}
+  \item[Horizontally open:] \(N\) is horizontally open iff 
+  \[
+    \forall (x, y) \in N\; \exists U \in \chi \text{ such that } x \in U \text{ and } U \times \{y\} \subseteq N.
+  \]
+
+  \item[Vertically open:] \(N\) is vertically open iff 
+  \[
+    \forall (x, y) \in N\; \exists V \in \upsilon \text{ such that } y \in V \text{ and } \{x\} \times V \subseteq N.
+  \]
+
+\end{description}
+
+$\tau_1$ (horizontal topology) is the set of all horizontally open sets and $\tau_2$ (vertical topology) the set of all vertically open sets.
+
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Illustration}
+    \centering
+    \includegraphics[width=0.55\textwidth]{Example4.pdf}
+
+\end{frame}
 \end{document}
