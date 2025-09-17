@@ -44,8 +44,8 @@
   \item Multimodal logic and product of frames/spaces and logics
     \begin{itemize}
       \item Notation, Fusion of logics
-      \item Horizontal and Vertical topology/functions and semantics
-      \item Product of logics
+      \item Horizontal and Vertical topology/functions
+      \item Product of logics and the logic T
     \end{itemize}
   \item Main result and ideas
   \end{itemize}
@@ -105,22 +105,27 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Topological space}
+  \frametitle{Motivation topological space}
   \begin{itemize}
-    \item We want to reason not just about "what is true" but "where is true"
+    \item We want to reason not just about "what is true" but "where is true" \pause
     \item Topological space deals with open sets, it can describes which points are "nearby"
-    \pause
-    \item applications: spatial reasoning for example reasoning about neighboring regions or reachability (AI, robotics)
-    \pause
-    \item A topological space is a pair $(X, \tau)$, where $\tau$ (called topology) is a collection of subsets of $X$ (open sets) such that: 
-    \begin{itemize}
-      \item $\emptyset$ and $X$ are open
-      \item the union of arbitrary collection of open sets is open
-      \item the intersection of finite collection of open sets is open
+    \item applications: spatial reasoning %for example reasoning about neighboring regions or reachability (AI, robotics)
     \end{itemize}
-    \item A topological model is a structure $M = (X,\tau, \upsilon)$ where $(X, \tau)$ is a topological space and $\upsilon$ a valuation of the form $\upsilon : Prop \rightarrow 2^X$ 
-  \end{itemize}
-\end{frame}
+    \end{frame}
+
+
+    \begin{frame}
+      \frametitle{Topological space}
+      \begin{itemize}
+            \item A topological space is a pair $(X, \tau)$, where $\tau$ (called topology) is a collection of subsets of $X$ (open sets) such that: 
+        \begin{itemize}
+          \item $\emptyset$ and $X$ are open
+          \item the union of arbitrary collection of open sets is open
+          \item the intersection of finite collection of open sets is open
+        \end{itemize}
+          \item A topological model is a structure $M = (X,\tau, \upsilon)$ where $(X, \tau)$ is a topological space and $\upsilon$ a valuation of the form $\upsilon : Prop \rightarrow 2^X$ 
+      \end{itemize}
+  \end{frame}
 
 \begin{frame}
   \frametitle{Topological semantics}
@@ -197,7 +202,7 @@
   \begin{itemize}
     \item Mutlimodal logic allows us to reason about knowledge,time etc. simultaneously 
     \item for example we can combine temporal and epistemic logic to reason about "when does the agent knows something" (product of frames) \pause
-    \item horizontal and vertical relation allows us to reason in one dimension, for example we a fix time point and ask what does the agent knows at that time?
+    \item horizontal and vertical relation allows us to reason in one dimension% , for example we a fix time point and ask what does the agent knows at that time?
     \item Let $F = (W, R_1)$ and $G = (V, R_2)$. We define the Kripke product on $W \times V$as : 
       $$(w,v)R_1'(w',v') \mbox{ iff } wR_1w' \mbox{ and } v = v' \text{  (horizontal)}$$
       $$(w,v)R_2  '(w',v') \mbox{ iff } w = w' \mbox{ and } vR_2v' \text{(vertical)}$$
@@ -244,9 +249,51 @@ $\tau_1$ (horizontal topology) is the set of all horizontally open sets and $\ta
 \end{frame}
 
 \begin{frame}
-  \frametitle{Illustration}
+  \frametitle{Illustration, standard product}
     \centering
     \includegraphics[width=0.55\textwidth]{Example4.pdf}
+  \begin{itemize}
+    \item we can also reason in both directions at once with the standard topology
+    \item we denote the standard toplogy as $\tau$ where 
+    $$\tau = \{N \subseteq X \times Y \mid \exists U \in \chi \exists V \in \upsilon: N = U \times V\}$$  
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{horizontal, vertical and standard functions}
+  Let $\mathcal{X}$ = ($X$, $\tau_1$) and $\mathcal{Y}$ = ($Y$, $\tau_2$) be two n-frames. We define the full product as
+    $$\mathcal{X} \times_n^+  \mathcal{Y} = (X \times Y, \tau_1', \tau_2', \tau) \text{ where}$$
+    $$ \tau_1'(x,y) = \{ U \subseteq \mbox{X} \times \mbox{Y} \mid \exists V \in \tau_1(x) : V \times  \{ y \} \subseteq U \}$$
+    $$ \tau_2'(x,y) = \{ U \subseteq \mbox{X} \times \mbox{Y} \mid \exists V \in \tau_2(y) : \{ x \} \times V \subseteq U \}$$
+        $$ \tau(x,y) = \{ U \subseteq \mbox{X} \times \mbox{Y} \mid \exists W \in \tau_1(x) \, \exists V \in \tau_2(y) : W \times V \subseteq U \}$$   
+\end{frame}
+
+\begin{frame}
+  \frametitle{Product of logics and the logic T}
+  Let $L_1$ and $L_2$ be two unimodal logic. We define the full n-product of them as:
+  $$L_1 \times_n^+ L_2 =  Log(\{\mathcal{X} \times_n^+ \mathcal{Y} \mid \mathcal{X} \Vdash L_1 \text{ and } \mathcal{Y} \Vdash L_2 \})$$ \pause
+  \begin{itemize}
+    \item this thesis deals with the logic $T$
+    \item $T = K + \Box p \rightarrow p$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Main Research Question}
+  \begin{itemize}
+    \item Does the following equality holds? 
+    $$T \otimes T \otimes T + \Box p \rightarrow \Box_1 p \land \Box_2 p = T \times_n^+ T$$
+    where $T \otimes T \otimes T = K_3 + T_{\Box} + T_{(\Box \rightarrow \Box_1)} + T_{(\Box \rightarrow \Box_2)}$ is the logic with three modalities 
+    and $\Box p \rightarrow \Box_1 p \land \Box_2 p$ the interaction axiom
+    \item main motivation comes from epistemic logic 
+    \item We will only sketch completeness w.r.t. to the class of frames
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Sketch of the main ideas}
+  
 
 \end{frame}
 \end{document}
