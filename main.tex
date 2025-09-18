@@ -3,6 +3,8 @@
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[default,scale=.95]{opensans}
+\usepackage[most]{tcolorbox}
+
 
 
 \usetheme[cd2018]{tud}
@@ -285,15 +287,130 @@ $\tau_1$ (horizontal topology) is the set of all horizontally open sets and $\ta
     \item Does the following equality holds? 
     $$T \otimes T \otimes T + \Box p \rightarrow \Box_1 p \land \Box_2 p = T \times_n^+ T$$
     where $T \otimes T \otimes T = K_3 + T_{\Box} + T_{(\Box \rightarrow \Box_1)} + T_{(\Box \rightarrow \Box_2)}$ is the logic with three modalities 
-    and $\Box p \rightarrow \Box_1 p \land \Box_2 p$ the interaction axiom
+    and $\Box p \rightarrow \Box_1 p \land \Box_2 p$ the interaction axiom \pause
     \item main motivation comes from epistemic logic 
-    \item We will only sketch completeness w.r.t. to the class of frames
+    \item we will only sketch the right to left inclusion
+    \item proof is splitted into two parts (ideas are from [1], [2])
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Sketch of the main ideas}
-  
+  \begin{itemize}
+    \item Pick $\mathcal{C} = \{F \mid F \Vdash T \otimes T\otimes T + \Box p \rightarrow \Box_1 p \land \Box_2 p\}$  \pause
+    \item Show $Log(\mathcal{C}) = T \otimes T \otimes T + \Box p \rightarrow \Box_1 p \land \Box_2 p$ via Sahlqvist Theorem
+    \item We show finite model property of the logic with Filtration Theorem \pause
+    \item Construct an infinite branching and infinite depth tree with three reflexive relations ($T_{\omega,\omega,\omega[rn]}$) \pause
+    \item Show $Log(T_{\omega,\omega,\omega[rn]}) = T \otimes T \otimes T+ \Box p \rightarrow \Box_1 p \land \Box_2 p$
+    \item By FMP pick a finite frame $F \in \mathcal{C}$ and construct a bounded morphism from $T_{\omega,\omega,\omega[rn]}$ to $F$
+  \end{itemize}
 
 \end{frame}
+
+\begin{frame}
+  \frametitle{Sketch continue}
+  $$Log(T_{\omega,\omega,\omega[rn]}) = T \otimes T \otimes T+ \Box p \rightarrow \Box_1 p \land \Box_2 p$$
+  \begin{itemize}
+    \item we introduce a simpler version of $T_{\omega,\omega,\omega[rn]}$ which is $T_{\omega[rn]}$ \pause
+    \item construct a neighbourhood version of $T_{\omega[rn]}$ called $N_\omega(T_{\omega[rn]})$ 
+    \item we can show $T = Log(N_\omega(T_{\omega[rn]}))$ \pause
+    \item construct a bounded morphism $$N_\omega(T_{\omega[rn]}) \times_n^+ N_\omega(T_{\omega[rn]}) \rightarrow T_{\omega,\omega,\omega[rn]}$$
+    \item with some further steps we can conclude $$T \times_n^+ T \subseteq T \otimes T \otimes T + \Box p \rightarrow \Box_1 p \land \Box_2 p$$
+  \end{itemize}
+
+\end{frame}  
+
+\begin{frame}
+  \frametitle{$T_{\omega,\omega,\omega[rn]}$ and a more detailed sketch}
+  %\centering
+  %\includegraphics[width=0.73\textwidth]{Example7.pdf} \newline\pause
+  %\begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, title=Bounded morphism, fontupper=\sffamily\small]
+ %     Let $F = (W,R_1,R_2,...)$ and $F' = (W',R_1',R_2',...)$ be two frames. A bounded morphism is a function $f: W \rightarrow W'$ with the following conditions:
+   %   $$\text{If } uR_iv \text{ then } f(u)R_i'f(v)$$
+  %    $$\text{If } f(w)R_i'v' \text{ then } \exists v\in W: wRv \text{ and } f(v) = v'$$
+ % \end{tcolorbox}
+    Let $F = (W,R_1,R_2,...)$ and $F' = (W',R_1',R_2',...)$ be two frames. A bounded morphism $f: W \rightarrow W'$ can be illustrated as:
+    \centering
+    \includegraphics[width=0.73\textwidth]{Example8.pdf}
+
+    \vspace{1cm}
+    \begin{tikzpicture}
+      \node[draw, circle, minimum size=0.2cm] (A) at (0,0) {$w$};
+      \node[draw, circle, minimum size=0.2cm] (B) at (0,-1.5) {$v$};
+      \node[draw, circle, font=\tiny\itshape] (C) at (1.8,0) {$f(w)$};
+      \node[draw, circle, font=\tiny\itshape] (D) at (1.8,-1.5){$f(v)$};
+      
+
+      \draw [->] (C) -- (D);
+      \draw[->, bend left=30,dotted, thick] (A) to (C); \pause
+      \draw [->,red] (A) -- (B);
+      \draw [->, bend left=330,dotted, thick,red] (B) to (D);
+    \end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{$T_{\omega,\omega,\omega[rn]}$ and a more detailed sketch}
+  \includegraphics[width=0.73\textwidth]{Example7.pdf} \newline\pause
+
+  \begin{tikzpicture}[yshift=-0.15cm]
+    \node[draw, circle, minimum size=0.2cm] (A) at (0,0) {$x$};
+    \node[draw, circle, minimum size=0.2cm] (B) at (1,1) {$y$};
+    \node[draw, circle, minimum size=0.2cm] (C) at (1,-1) {$z$};
+    \draw [->] (A) to (B);
+    \draw [->] (A) to (C);
+
+    \node at (-0.5,1.5) {$R_1'$};
+
+    \node[draw, circle, minimum size=0.2cm] (D) at (4,0) {$x$};
+    \node[draw, circle, minimum size=0.2cm] (E) at (5,1) {$y$};
+    \node[draw, circle, minimum size=0.2cm] (F) at (5,-1) {$z$};
+    \draw [->] (D) to (E);
+    \draw [->] (E) to (F);
+
+    \node at (3.5,1.5) {$R_2'$};
+
+    \node[draw, circle, minimum size=0.2cm] (G) at (7.5,0) {$x$};
+    \node[draw, circle, minimum size=0.2cm] (H) at (9,1) {$y$};
+    \node[draw, circle, minimum size=0.2cm] (I) at (9,-1) {$z$};
+
+    \draw [->] (G) to (H);
+    \draw [->] (G) to (I);
+
+    \draw[->,  bend left=30, thick] (H) to (I);
+    \draw[->, bend left=30,thick] (I) to (H);
+
+    \node at (7.5,1.5) {$R'$};
+
+
+  \end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Future works}
+  \begin{itemize}
+    \item Many ways to continue the Research
+    \item Discover how it works for logic $K$
+    \item Combine different logics for example $D \times_n^+ K, T \times_n^+ K, ...$
+    \item For logic $\Lambda$ with $T \subseteq \Lambda \subseteq S4$, does the following hold:
+     $$\Lambda \otimes \Lambda \otimes \Lambda + \Box p \rightarrow \Box_1 p \land \Box_2 p = \Lambda \times_n^+ \Lambda$$
+  
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \vspace{3.5cm}
+  \centering
+  \begin{tikzpicture}
+    \node[font=\Large] at (0,0) {Conclusion};
+  \end{tikzpicture}
+
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{References}
+\end{frame}
+
 \end{document}
