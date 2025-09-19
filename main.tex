@@ -4,6 +4,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[default,scale=.95]{opensans}
 \usepackage[most]{tcolorbox}
+%\usepackage{enumitem}
 
 
 
@@ -45,7 +46,7 @@
      \end{itemize}
   \item Multimodal logic and product of frames/spaces and logics
     \begin{itemize}
-      \item Notation, Fusion of logics
+      \item Multimodal logic and product of frames
       \item Horizontal and Vertical topology/functions
       \item Product of logics and the logic T
     \end{itemize}
@@ -203,11 +204,14 @@
   \frametitle{Multimodal logic and product of frames}
   \begin{itemize}
     \item Mutlimodal logic allows us to reason about knowledge,time etc. simultaneously 
-    \item for example we can combine temporal and epistemic logic to reason about "when does the agent knows something" (product of frames) \pause
+    \item for example we can combine temporal and epistemic logic to reason about "when does the agent knows something" \pause
     \item horizontal and vertical relation allows us to reason in one dimension% , for example we a fix time point and ask what does the agent knows at that time?
-    \item Let $F = (W, R_1)$ and $G = (V, R_2)$. We define the Kripke product on $W \times V$as : 
-      $$(w,v)R_1'(w',v') \mbox{ iff } wR_1w' \mbox{ and } v = v' \text{  (horizontal)}$$
-      $$(w,v)R_2  '(w',v') \mbox{ iff } w = w' \mbox{ and } vR_2v' \text{(vertical)}$$
+    \item Let $F = (W, R_1)$ and $G = (V, R_2)$. We define the Kripke product on $W \times V$ as : 
+      \begin{align*}
+              (w,v)R_1'(w',v') &\text{ iff } wR_1w' \mbox{ and } v = v' \text{  (horizontal)} \\
+              (w,v)R_2  '(w',v') &\text{ iff } w = w' \mbox{ and } vR_2v' \text{(vertical)}
+      \end{align*}
+
     %\item Let $L_1$ and $L_2$ be two modal logics with one modality $\Box$. Then the fusion
     %is defined as: $$L_1 \otimes L_2 = K_2 + L_{1 \Box \rightarrow \Box_1} + L_{2 \Box \rightarrow \Box_2}$$
    % \item we consider the product of frames to evaluate multimodal formulas
@@ -228,7 +232,7 @@
 \begin{frame}
   \frametitle{Horizontal and Vertical topology}
   \begin{itemize}
-    \item in topological space, horizontal and vertical can be also defined 
+    \item in topological space, horizontal and vertical can be also defined \pause
   \end{itemize}
   Let \( \mathcal{X} = (X, \chi) \) and \( \mathcal{Y} = (Y, \upsilon) \) be topological spaces and \( N \subseteq X \times Y \) \newline
 
@@ -244,8 +248,10 @@
   \]
 
 \end{description}
+\begin{itemize}
+  \item $\tau_1$ (horizontal topology) is the set of all horizontally open sets and $\tau_2$ (vertical topology) the set of all vertically open sets.
+\end{itemize}
 
-$\tau_1$ (horizontal topology) is the set of all horizontally open sets and $\tau_2$ (vertical topology) the set of all vertically open sets.
 
 
 \end{frame}
@@ -253,7 +259,7 @@ $\tau_1$ (horizontal topology) is the set of all horizontally open sets and $\ta
 \begin{frame}
   \frametitle{Illustration, standard product}
     \centering
-    \includegraphics[width=0.55\textwidth]{Example4.pdf}
+    \includegraphics[width=0.55\textwidth]{Example4.pdf} \pause
   \begin{itemize}
     \item we can also reason in both directions at once with the standard topology
     \item we denote the standard toplogy as $\tau$ where 
@@ -381,6 +387,8 @@ $\tau_1$ (horizontal topology) is the set of all horizontally open sets and $\ta
     \draw[->, bend left=30,thick] (I) to (H);
 
     \node at (7.5,1.5) {$R'$};
+    \pause
+
 
 
   \end{tikzpicture}
@@ -390,7 +398,7 @@ $\tau_1$ (horizontal topology) is the set of all horizontally open sets and $\ta
 \begin{frame}
   \frametitle{Future works}
   \begin{itemize}
-    \item Many ways to continue the Research
+    \item Many ways to continue the research
     \item Discover how it works for logic $K$
     \item Combine different logics for example $D \times_n^+ K, T \times_n^+ K, ...$
     \item For logic $\Lambda$ with $T \subseteq \Lambda \subseteq S4$, does the following hold:
@@ -405,12 +413,16 @@ $\tau_1$ (horizontal topology) is the set of all horizontally open sets and $\ta
   \begin{tikzpicture}
     \node[font=\Large] at (0,0) {Conclusion};
   \end{tikzpicture}
-
-
 \end{frame}
 
 \begin{frame}
   \frametitle{References}
+    [1] Johan van Benthem, Guram Bezhanishvili, Balder ten Cate, and Darko Sarenac.\\
+    Multimodal logics of products of topologies. \textit{Studia Logica}, 84:369–392, 2006. \newline
+
+    [2] Andrei Kudinov. Modal logic of some products of neighbourhood frames.\\
+    In \textit{Advances in Modal Logic, Volume 9}, pages 286–294, London, 2012. College Publications.
 \end{frame}
+
 
 \end{document}
