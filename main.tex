@@ -30,7 +30,7 @@
 
 %\newtheorem{theorem}{Theorem}
 %\newtheorem{definition}{Definition}
-
+\newtheorem{claim}{Claim}
 \begin{document}
 
 %%%% Uncomment the following line to set background image to main slide
@@ -122,7 +122,7 @@
 \begin{frame}
   \frametitle{Topological space}
   \begin{itemize}
-    \item Topological space deals with open sets, it can describes which points are "nearby" \pause %truth is defined differently 
+    \item deals with open sets, describes which points are "nearby" \pause %truth is defined differently 
     \begin{definition}
              A topological space is a pair $(X, \tau)$, where $\tau$ (called topology) is a collection of subsets of $X$ (open sets) such that: \pause
         \begin{itemize}
@@ -140,7 +140,7 @@
     \frametitle{Example}
     \begin{itemize}
       \item  Let $(X,\tau)$ be a topological space with 
-      $X = \{1,2,3\}$, $\tau = \{\emptyset, \{1\}, \{2\}, \{1,2\}, W\}$ and $V(p) = \{1,2\}$. Furthermore, let $\phi = \Box p$.
+      $X = \{1,2,3\}$, $\tau = \{\emptyset, \{1\}, \{2\}, \{1,2\}, W\}$ ,$V(p) = \{1,2\}$  and $\phi = \Box p$
       \pause
     \end{itemize}
     \centering
@@ -151,6 +151,7 @@
 
 \begin{frame}
   \frametitle{Topological semantics}
+  \begin{definition}
   Let $M = (X, \tau, \upsilon)$ be a topological model and $x \in X$ a point in $M$. A formula being true at $x$ is inductively defined as:
 
   \[
@@ -161,9 +162,9 @@
     M, x &\vDash \phi \lor \psi &&\text{iff } M, x \vDash \phi \text{ or } M, x \vDash \psi \\
     M, x &\vDash \textcolor{red}{\Box \phi} &&\text{iff }\exists U \in \tau \text{ such that } x \in U \text{ and } \forall u \in U,\; M, u \vDash \phi \\
     M, x &\vDash \textcolor{red}{\lozenge \phi} &&\text{iff }\forall U \in \tau: \text{if }x \in U \rightarrow \exists u \in U,\; M, u \vDash \phi
-\end{aligned}
+  \end{aligned}
 \]
-
+\end{definition}
 \end{frame}
 
 
@@ -200,6 +201,7 @@
 
 \begin{frame}
   \frametitle{Neighbourhood semantics}
+  \begin{definition}
   Let $M = (X,\tau,\upsilon)$ be a neighbourhood model and $x \in X$ a point in $M$. A formula being true at x is inductively defined as:
       \begin{align*}
         M,x &\Vdash p &&\text{iff } x \in V(p)\\
@@ -208,7 +210,7 @@
         M,x &\Vdash \phi \lor \psi &&\text{iff } M,x \vDash \phi \lor M,x \vDash \psi\\
         M,x &\Vdash \textcolor{red}{\Box \phi} &&\text{iff } \exists V \in \tau(x) \forall y \in V : M,y \models \phi
     \end{align*}
-
+  \end{definition}
 \end{frame}
 
 
@@ -229,9 +231,9 @@
 \begin{frame}
   \frametitle{Multimodal logic and product of frames}
   \begin{itemize}
-    \item Mutlimodal logic allows us to reason about knowledge,time etc. simultaneously 
-    \item for example we can combine temporal and epistemic logic to reason about "when does the agent knows something" \pause % consider the product of frames to interpret the formulas 
-    \item horizontal and vertical relation allows us to reason in one dimension \pause% , for example we a fix time point and ask what does the agent knows at that time?
+    \item Multimodal logic: simultaneously reasons about knowledge,time etc. 
+    \item combine temporal and epistemic logic to reason about "when does the agent knows something" \pause % consider the product of frames to interpret the formulas 
+    \item Product of frames: horizontal and vertical relation allows us to reason in one dimension \pause% , for example we a fix time point and ask what does the agent knows at that time?
     \begin{definition}
       Let $F = (W, R_1)$ and $G = (V, R_2)$. We define the Kripke product on $W \times V$ as : 
         \begin{align*}
@@ -266,6 +268,26 @@
        \node[draw, circle, inner sep=1.5pt] (E) at (5,-1) {$b$};
 
        \draw [red, ->] (D) -- (E);
+       \node at (3.5,-0.5) {$R_2$}; \pause
+
+       \node[draw, circle, inner sep=1pt] (F) at (8,0) {\small 3,a};
+       \node[draw, circle, inner sep=1pt] (G) at (8,-1) {\small 2,a};
+       \node[draw, circle, inner sep=1pt] (H) at (8,-2) {\small 1,a};
+
+       \node[draw, circle, inner sep=1pt] (I) at (9,0) {\small 3,b};
+       \node[draw, circle, inner sep=1pt] (J) at (9,-1) {\small 2,b};
+       \node[draw, circle, inner sep=1pt] (K) at (9,-2) {\small 1,b};
+
+       \draw [blue,->] (H) -- (G);
+       \draw [blue,->] (G) -- (F);
+       \draw [blue,->] (K) -- (J);
+       \draw [blue,->] (J) -- (I);
+
+       \draw [red,->] (F) -- (I);
+       \draw [red,->] (G) -- (J);
+       \draw [red,->] (H) -- (K);
+
+
     \end{tikzpicture}
 \pause
 
@@ -281,23 +303,24 @@
 
 \begin{frame}
   \frametitle{Horizontal and Vertical topology}
-  \begin{itemize}
-    \item in topological space, horizontal and vertical can be also defined \pause
-  \end{itemize}
-  Let \( \mathcal{X} = (X, \chi) \) and \( \mathcal{Y} = (Y, \upsilon) \) be topological spaces and \( N \subseteq X \times Y \) \newline
+   % \item in topological space, horizontal and vertical can be also defined \pause
+  \begin{definition}
+      Let \( \mathcal{X} = (X, \chi) \) and \( \mathcal{Y} = (Y, \upsilon) \) be topological spaces and \( N \subseteq X \times Y \) \newline
 
-\begin{description}
-  \item[Horizontally open:] \(N\) is horizontally open iff 
-  \[
-    \forall (x, y) \in N\; \exists U \in \chi \text{ such that } x \in U \text{ and } U \times \{y\} \subseteq N.
-  \]
+    \begin{description}
+      \item[Horizontally open:] \(N\) is horizontally open iff 
+      \[
+        \forall (x, y) \in N\; \exists U \in \chi \text{ such that } x \in U \text{ and } U \times \{y\} \subseteq N.
+      \]
 
-  \item[Vertically open:] \(N\) is vertically open iff 
-  \[
-    \forall (x, y) \in N\; \exists V \in \upsilon \text{ such that } y \in V \text{ and } \{x\} \times V \subseteq N.
-  \]
+      \item[Vertically open:] \(N\) is vertically open iff 
+      \[
+        \forall (x, y) \in N\; \exists V \in \upsilon \text{ such that } y \in V \text{ and } \{x\} \times V \subseteq N.
+      \]
 
-\end{description}
+    \end{description}    
+  \end{definition}
+
 \begin{itemize}
   \item $\tau_1$ (horizontal topology) is the set of all horizontally open sets and $\tau_2$ (vertical topology) the set of all vertically open sets.
 \end{itemize}
@@ -312,7 +335,7 @@
     \includegraphics[width=0.55\textwidth]{Example4.pdf} \pause
   \begin{itemize}
     \item we can also reason in both directions at once with the standard topology
-    \item we denote the standard toplogy as $\tau$ where 
+    \item we denote the basis of the standard topology as $\tau$ where 
     $$\tau = \{N \subseteq X \times Y \mid \exists U \in \chi \exists V \in \upsilon: N = U \times V\}$$  
   \end{itemize}
 
@@ -320,31 +343,37 @@
 
 \begin{frame}
   \frametitle{horizontal, vertical and standard functions}
-  Let $\mathcal{X}$ = ($X$, $\tau_1$) and $\mathcal{Y}$ = ($Y$, $\tau_2$) be two n-frames. We define the full product as
-    $$\mathcal{X} \times_n^+  \mathcal{Y} = (X \times Y, \tau_1', \tau_2', \tau) \text{ where}$$
-    $$ \tau_1'(x,y) = \{ U \subseteq \mbox{X} \times \mbox{Y} \mid \exists V \in \tau_1(x) : V \times  \{ y \} \subseteq U \}$$
-    $$ \tau_2'(x,y) = \{ U \subseteq \mbox{X} \times \mbox{Y} \mid \exists V \in \tau_2(y) : \{ x \} \times V \subseteq U \}$$
-        $$ \tau(x,y) = \{ U \subseteq \mbox{X} \times \mbox{Y} \mid \exists W \in \tau_1(x) \, \exists V \in \tau_2(y) : W \times V \subseteq U \}$$   
+  \begin{definition}
+    Let $\mathcal{X}$ = ($X$, $\tau_1$) and $\mathcal{Y}$ = ($Y$, $\tau_2$) be two n-frames. We define the full product as
+      $$\mathcal{X} \times_n^+  \mathcal{Y} = (X \times Y, \tau_1', \tau_2', \tau) \text{ where}$$
+      $$ \tau_1'(x,y) = \{ U \subseteq \mbox{X} \times \mbox{Y} \mid \exists V \in \tau_1(x) : V \times  \{ y \} \subseteq U \}$$
+      $$ \tau_2'(x,y) = \{ U \subseteq \mbox{X} \times \mbox{Y} \mid \exists V \in \tau_2(y) : \{ x \} \times V \subseteq U \}$$
+          $$ \tau(x,y) = \{ U \subseteq \mbox{X} \times \mbox{Y} \mid \exists W \in \tau_1(x) \, \exists V \in \tau_2(y) : W \times V \subseteq U \}$$      
+  \end{definition}
+
 \end{frame}
 
 \begin{frame}
-  \frametitle{Product of logics and the logic T}
-  Let $L_1$ and $L_2$ be two unimodal logic. We define the full n-product of them as:
-  $$L_1 \times_n^+ L_2 =  Log(\{\mathcal{X} \times_n^+ \mathcal{Y} \mid \mathcal{X} \Vdash L_1 \text{ and } \mathcal{Y} \Vdash L_2 \})$$ \pause
-  \begin{itemize}
-    \item this thesis deals with the logic $T$
-    \item $T = K + \Box p \rightarrow p$
-  \end{itemize}
+  \frametitle{Product of logics }
+  \begin{definition}
+    Let $L_1$ and $L_2$ be two unimodal logic. We define the full n-product of them as:
+    $$L_1 \times_n^+ L_2 =  Log(\{\mathcal{X} \times_n^+ \mathcal{Y} \mid \mathcal{X} \Vdash L_1 \text{ and } \mathcal{Y} \Vdash L_2 \})$$   
+    where $Log(\mathcal{C}) = \{\phi \mid F \Vdash \phi \text{ for } F \in \mathcal{C}\}$
+  \end{definition}
+
+
 \end{frame}
 
 \begin{frame}
   \frametitle{Main Research Question}
+    \begin{theorem}
+      $$T \otimes T \otimes T + \Box p \rightarrow \Box_1 p \land \Box_2 p = T \times_n^+ T$$
+          \end{theorem}\pause
+
+
   \begin{itemize}
-    \item Does the following equality holds? 
-    $$T \otimes T \otimes T + \Box p \rightarrow \Box_1 p \land \Box_2 p = T \times_n^+ T$$
-    where $T \otimes T \otimes T = K_3 + T_{\Box} + T_{(\Box \rightarrow \Box_1)} + T_{(\Box \rightarrow \Box_2)}$ is the logic with three modalities 
-    and $\Box p \rightarrow \Box_1 p \land \Box_2 p$ the interaction axiom \pause
-    \item main motivation comes from epistemic logic 
+    \item $T \otimes T \otimes T = K_3 + T_{\Box} + T_{(\Box \rightarrow \Box_1)} + T_{(\Box \rightarrow \Box_2)}$ is the logic with three modalities 
+      and $\Box p \rightarrow \Box_1 p \land \Box_2 p$ the interaction axiom \pause
     \item we will only sketch the right to left inclusion
     \item proof is splitted into two parts (ideas are from [1], [2])
   \end{itemize}
@@ -354,41 +383,46 @@
   \frametitle{Sketch of the main ideas}
   \begin{itemize}
     \item Pick $\mathcal{C} = \{F \mid F \Vdash T \otimes T\otimes T + \Box p \rightarrow \Box_1 p \land \Box_2 p\}$  \pause
-    \item Show $Log(\mathcal{C}) = T \otimes T \otimes T + \Box p \rightarrow \Box_1 p \land \Box_2 p$ via Sahlqvist Theorem
-    \item We show finite model property of the logic with Filtration Theorem \pause
-    \item Construct an infinite branching and infinite depth tree with three reflexive relations ($T_{\omega,\omega,\omega[rn]}$) \pause
-    \item Show $Log(T_{\omega,\omega,\omega[rn]}) = T \otimes T \otimes T+ \Box p \rightarrow \Box_1 p \land \Box_2 p$
-    \item By FMP pick a finite frame $F \in \mathcal{C}$ and construct a bounded morphism from $T_{\omega,\omega,\omega[rn]}$ to $F$
-  \end{itemize}
+    \end{itemize}
+
+    \begin{claim}
+      $Log(\mathcal{C}) = T \otimes T \otimes T + \Box p \rightarrow \Box_1 p \land \Box_2 p$
+    \end{claim} \pause
+
+    \begin{itemize}
+      \item  Shown by \textcolor{red}{Sahlqvist Theorem}
+    \end{itemize}
+
+    \begin{claim}
+      $T \otimes T \otimes T + \Box p \rightarrow \Box_1 p \land \Box_2 p$ has the finite model property
+    \end{claim}
+
+    \begin{itemize}
+      \item Use \textcolor{red}{Filtration Theorem}
+    \end{itemize}
+
+    %\item Show $Log(T_{\omega,\omega,\omega[rn]}) = T \otimes T \otimes T+ \Box p \rightarrow \Box_1 p \land \Box_2 p$
+   % \item By FMP pick a finite frame $F \in \mathcal{C}$ and construct a bounded morphism from $T_{\omega,\omega,\omega[rn]}$ to $F$
+
 
 \end{frame}
 
 \begin{frame}
   \frametitle{Sketch continue}
-  $$Log(T_{\omega,\omega,\omega[rn]}) = T \otimes T \otimes T+ \Box p \rightarrow \Box_1 p \land \Box_2 p$$
   \begin{itemize}
-    \item we introduce a simpler version of $T_{\omega,\omega,\omega[rn]}$ which is $T_{\omega[rn]}$ \pause
-    \item construct a neighbourhood version of $T_{\omega[rn]}$ called $N_\omega(T_{\omega[rn]})$ 
-    \item we can show $T = Log(N_\omega(T_{\omega[rn]}))$ \pause
-    \item construct a bounded morphism $$N_\omega(T_{\omega[rn]}) \times_n^+ N_\omega(T_{\omega[rn]}) \rightarrow T_{\omega,\omega,\omega[rn]}$$
-    \item with some further steps we can conclude $$T \times_n^+ T \subseteq T \otimes T \otimes T + \Box p \rightarrow \Box_1 p \land \Box_2 p$$
+    \item construct an infinite branching and infinite depth tree with three reflexive relations ($T_{\omega,\omega,\omega[rn]}$) \pause
   \end{itemize}
+  \centering
+  \includegraphics[width=0.73\textwidth]{Example7.pdf}
+    
+  \end{frame}
 
-\end{frame}  
-
-\begin{frame}
-  \frametitle{$T_{\omega,\omega,\omega[rn]}$ and a more detailed sketch}
-  %\centering
-  %\includegraphics[width=0.73\textwidth]{Example7.pdf} \newline\pause
-  %\begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, title=Bounded morphism, fontupper=\sffamily\small]
- %     Let $F = (W,R_1,R_2,...)$ and $F' = (W',R_1',R_2',...)$ be two frames. A bounded morphism is a function $f: W \rightarrow W'$ with the following conditions:
-   %   $$\text{If } uR_iv \text{ then } f(u)R_i'f(v)$$
-  %    $$\text{If } f(w)R_i'v' \text{ then } \exists v\in W: wRv \text{ and } f(v) = v'$$
- % \end{tcolorbox}
-    Let $F = (W,R_1,R_2,...)$ and $F' = (W',R_1',R_2',...)$ be two frames. A bounded morphism $f: W \rightarrow W'$ can be illustrated as:
-    \centering
-    \includegraphics[width=0.73\textwidth]{Example8.pdf}
-
+  \begin{frame}
+    \frametitle{Sketch continue}
+    \begin{definition}
+      Let $F = (W,R_1,R_2,...)$ and $F' = (W',R_1',R_2',...)$ be two frames. A bounded morphism $f: W \rightarrow W'$ can be illustrated as:  
+      \includegraphics[width=0.73\textwidth]{Example8.pdf}
+    
     \vspace{1cm}
     \begin{tikzpicture}
       \node[draw, circle, minimum size=0.2cm] (A) at (0,0) {$w$};
@@ -402,8 +436,17 @@
       \draw [->,red] (A) -- (B);
       \draw [->, bend left=330,dotted, thick,red] (B) to (D);
     \end{tikzpicture}
+    \end{definition} 
 
-\end{frame}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Sketch continue}
+    \begin{claim}
+       $Log(T_{\omega,\omega,\omega[rn]}) = T \otimes T \otimes T+ \Box p \rightarrow \Box_1 p \land \Box_2 p$   
+    \end{claim}
+    
+  \end{frame} 
 
 \begin{frame}
   \frametitle{$T_{\omega,\omega,\omega[rn]}$ and a more detailed sketch}
@@ -443,6 +486,20 @@
 
   \end{tikzpicture}
 \end{frame}
+
+
+\begin{frame}
+  \frametitle{Sketch continue}
+  $$Log(T_{\omega,\omega,\omega[rn]}) = T \otimes T \otimes T+ \Box p \rightarrow \Box_1 p \land \Box_2 p$$
+  \begin{itemize}
+    \item we introduce a simpler version of $T_{\omega,\omega,\omega[rn]}$ which is $T_{\omega[rn]}$ \pause
+    \item construct a neighbourhood version of $T_{\omega[rn]}$ called $N_\omega(T_{\omega[rn]})$ 
+    \item we can show $T = Log(N_\omega(T_{\omega[rn]}))$ \pause
+    \item construct a bounded morphism $$N_\omega(T_{\omega[rn]}) \times_n^+ N_\omega(T_{\omega[rn]}) \rightarrow T_{\omega,\omega,\omega[rn]}$$
+    \item with some further steps we can conclude $$T \times_n^+ T \subseteq T \otimes T \otimes T + \Box p \rightarrow \Box_1 p \land \Box_2 p$$
+  \end{itemize}
+
+\end{frame} 
 
 
 \begin{frame}
