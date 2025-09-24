@@ -4,6 +4,9 @@
 \usepackage[T1]{fontenc}
 \usepackage[default,scale=.95]{opensans}
 \usepackage[most]{tcolorbox}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+
 %\usepackage{enumitem}
 
 
@@ -25,6 +28,8 @@
 \datecity{CONFERENCE}
 \date{DATE}
 
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{definition}{Definition}
 
 \begin{document}
 
@@ -38,7 +43,7 @@
   \frametitle{Content}
 
   \begin{itemize}
-  \item Modal logic and semantics
+  \item Syntax and semantics
     \begin{itemize}
         \item Kripke frames
         \item Topological space
@@ -55,43 +60,31 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Modal logic and Kripke frames and models}
+  \frametitle{Basic modal language, Kripke frames and models}
   \begin{itemize}
-    \item Modal logic extends classical propositional logic. Formally:
-    $$\phi ::= p \mid \bot \mid \neg \phi \mid \phi \lor \phi \mid \Box \phi$$
-    where $\Box$ is a modal operator and Prop is a set of variable with $p \in$ Prop.
+    \item Basic modal langauge extends classical propositional logic. Formally:
+  \end{itemize}
+    
+    \begin{definition}
+      Let Prop be a set of variable. Then a formula $\phi$ is defined as follows:
+          $$\phi ::= p \mid \bot \mid \neg \phi \mid \phi \lor \phi \mid \textcolor{red}{\Box \phi}$$
+           where $\Box$ is a modal operator and $p \in$ Prop  
+    \end{definition}
     %Other connectives are expressed through $\neg$ and $\lor$ and dual modal operator $\lozenge$ as $\lozenge \phi = \neg \Box \neg \phi$. 
      \pause
 
-    \item A frame $F = (W,R)$ is a pair where 
+    \begin{definition}
+    A frame $F = (W,R)$ is a pair where   
     \begin{itemize}
       \item $W$ is a non-empty set of worlds
-      \item $R \subseteq W \times W$ is a binary relation  
+      \item $R \subseteq W \times W $ is a binary relation
     \end{itemize}
 
-    \item A model is a pair $M = (F,R)$ ($M$ is based on $F$) where
-      \begin{itemize}
-        \item $F$ is a frame
-        \item $V$ is a valuation and is of the form $V : Prop \rightarrow 2^W$
-      \end{itemize}
-  \end{itemize}
-\end{frame}
+    A model is a pair $M = (F,R)$ where $V$ is a valuation and is of the form $V : Prop \rightarrow 2^W$
 
-\begin{frame}
-  \frametitle{Kripke semantics}
-  \begin{itemize}
-    \item Let $M = (F,V)$ be a model and $w \in W$ a state in $M$. A formula being true at $w$ is inductively defined as: 
-  \end{itemize}
 
-  \begin{align*}
-    M, w &\Vdash p &&\text{ iff } w \in V(p) \\
-    M, w &\Vdash \bot  &&\text{ never } \\
-    M, w &\Vdash \neg \phi &&\text{ iff not } M, w \Vdash \phi \\ 
-    M, w &\Vdash \phi \lor \psi &&\text{ iff } M,w \Vdash \phi \lor M,w \Vdash \psi \\
-    M, w &\Vdash \Box \phi &&\text{ iff } \forall v \in W : wRv \rightarrow M, v \Vdash \phi \\
-    M, w &\Vdash \lozenge \phi &&\text{ iff } \exists v \in W : wRv \land M,v \Vdash \phi
-\end{align*}
-  
+    \end{definition}
+
 \end{frame}
 
 \begin{frame}
@@ -101,34 +94,60 @@
   \end{itemize}
   \centering
   \includegraphics[width=0.55\textwidth]{Example1.pdf}
-  \pause
-  \begin{itemize}
-    \item Kripke semantics has many applications for example epistemic logic, temporal logic,...
-  \end{itemize}
 \end{frame}
 
+
+
 \begin{frame}
-  \frametitle{Motivation topological space}
+  \frametitle{Kripke semantics}
+
+  \begin{definition}
+      Let $M = (F,V)$ be a model and $w \in W$ a state in $M$. A formula being true at $w$ is inductively defined as: 
+      \begin{align*}
+        M, w &\Vdash p &&\text{ iff } w \in V(p) \\
+        M, w &\Vdash \bot  &&\text{ never } \\
+        M, w &\Vdash \neg \phi &&\text{ iff not } M, w \Vdash \phi \\ 
+        M, w &\Vdash \phi \lor \psi &&\text{ iff } M,w \Vdash \phi \lor M,w \Vdash \psi \\
+        M, w &\Vdash \textcolor{red}{\Box \phi} &&\text{ iff } \forall v \in W : wRv \rightarrow M, v \Vdash \phi \\
+        M, w &\Vdash \textcolor{red}{\lozenge \phi} &&\text{ iff } \exists v \in W : wRv \land M,v \Vdash \phi
+    \end{align*}  
+  \end{definition}
+
+
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Topological space}
   \begin{itemize}
-    \item We want to reason not just about "what is true" but "where is true" \pause
-    \item Topological space deals with open sets, it can describes which points are "nearby"
-    \item applications: spatial reasoning %for example reasoning about neighboring regions or reachability (AI, robotics)
-    \end{itemize}
-    \end{frame}
-
-
-    \begin{frame}
-      \frametitle{Topological space}
-      \begin{itemize}
-            \item A topological space is a pair $(X, \tau)$, where $\tau$ (called topology) is a collection of subsets of $X$ (open sets) such that: 
+    \item Topological space deals with open sets, it can describes which points are "nearby" \pause %truth is defined differently 
+    \begin{definition}
+             A topological space is a pair $(X, \tau)$, where $\tau$ (called topology) is a collection of subsets of $X$ (open sets) such that: \pause
         \begin{itemize}
           \item $\emptyset$ and $X$ are open
           \item the union of arbitrary collection of open sets is open
           \item the intersection of finite collection of open sets is open
-        \end{itemize}
-          \item A topological model is a structure $M = (X,\tau, \upsilon)$ where $(X, \tau)$ is a topological space and $\upsilon$ a valuation of the form $\upsilon : Prop \rightarrow 2^X$ 
-      \end{itemize}
+        \end{itemize} \pause
+          A topological model is a structure $M = (X,\tau, \upsilon)$ where $(X, \tau)$ is a topological space and $\upsilon$ a valuation of the form $\upsilon : Prop \rightarrow 2^X$  
+    \end{definition}
+    \end{itemize}
+    \end{frame}
+
+  \begin{frame}
+  
+    \frametitle{Example}
+    \begin{itemize}
+      \item  Let $(X,\tau)$ be a topological space with 
+      $X = \{1,2,3\}$, $\tau = \{\emptyset, \{1\}, \{2\}, \{1,2\}, W\}$ and $V(p) = \{1,2\}$. Furthermore, let $\phi = \Box p$.
+      \pause
+    \end{itemize}
+    \centering
+    \includegraphics[width=0.55\textwidth]{Example2.pdf}
+
   \end{frame}
+
 
 \begin{frame}
   \frametitle{Topological semantics}
@@ -140,49 +159,28 @@
     M, x &\vDash \bot &&\text{never} \\
     M, x &\vDash \neg \phi &&\text{iff } M, x \nvDash \phi \\
     M, x &\vDash \phi \lor \psi &&\text{iff } M, x \vDash \phi \text{ or } M, x \vDash \psi \\
-    M, x &\vDash \Box \phi &&\text{iff }\exists U \in \tau \text{ such that } x \in U \text{ and } \forall u \in U,\; M, u \vDash \phi \\
-    M, x &\vDash \lozenge \phi &&\text{iff }\forall U \in \tau: \text{if }x \in U \rightarrow \exists u \in U,\; M, u \vDash \phi
+    M, x &\vDash \textcolor{red}{\Box \phi} &&\text{iff }\exists U \in \tau \text{ such that } x \in U \text{ and } \forall u \in U,\; M, u \vDash \phi \\
+    M, x &\vDash \textcolor{red}{\lozenge \phi} &&\text{iff }\forall U \in \tau: \text{if }x \in U \rightarrow \exists u \in U,\; M, u \vDash \phi
 \end{aligned}
 \]
 
 \end{frame}
 
-\begin{frame}
-  
-  \frametitle{Example}
-  \begin{itemize}
-    \item  Let $(X,\tau)$ be a topological space with 
-    $X = \{1,2,3\}$, $\tau = \{\emptyset, \{1\}, \{2\}, \{1,2\}, W\}$ and $V(p) = \{1,2\}$. Furthermore, let $\phi = \Box p$.
-    \pause
-  \end{itemize}
-  \centering
-  \includegraphics[width=0.55\textwidth]{Example2.pdf}
-\end{frame}
+
 
 
 \begin{frame}
   \frametitle{Neighbourhood frames}
-  \begin{itemize}
-    \item generalize Kripke semantics
-    \item captures non-normal modal logics
-    \item application in Epistemic logic
+    \begin{itemize}
+      \item generalize Kripke semantics
+      \item captures non-normal modal logics
+    \end{itemize}
+
     \pause
-    \item A neighbourhood frame is a pair $(X, \tau)$ where $\tau$ is a function $\tau : X \rightarrow 2^{2^X}$.
-    \item A neighbourhood model is a structure $M = (X, \tau, \upsilon)$, where $\upsilon$ is a valuation of the form $\upsilon : Prop \rightarrow 2^X$
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Neighbourhood semantics}
-  Let $M = (X,\tau,\upsilon)$ be a neighbourhood model and $x \in X$ a point in $M$. A formula being true at x is inductively defined as:
-      \begin{align*}
-        M,x &\Vdash p &&\text{iff } x \in V(p)\\
-        M,x &\Vdash \bot &&\text{never } \\
-        M,x &\Vdash \neg \phi &&\text{iff } M,x \nVdash \phi\\
-        M,x &\Vdash \phi \lor \psi &&\text{iff } M,x \vDash \phi \lor M,x \vDash \psi\\
-        M,x &\Vdash \Box \phi &&\text{iff } \exists V \in \tau(x) \forall y \in V : M,y \models \phi
-    \end{align*}
-
+    \begin{definition}
+      A neighbourhood frame is a pair $(X, \tau)$ where $\tau$ is a function $\tau : X \rightarrow 2^{2^X}$. \newline
+      A neighbourhood model is a structure $M = (X, \tau, \upsilon)$, where $\upsilon$ is a valuation of the form $\upsilon : Prop \rightarrow 2^X$
+    \end{definition}
 \end{frame}
 
 \begin{frame}
@@ -201,16 +199,49 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Neighbourhood semantics}
+  Let $M = (X,\tau,\upsilon)$ be a neighbourhood model and $x \in X$ a point in $M$. A formula being true at x is inductively defined as:
+      \begin{align*}
+        M,x &\Vdash p &&\text{iff } x \in V(p)\\
+        M,x &\Vdash \bot &&\text{never } \\
+        M,x &\Vdash \neg \phi &&\text{iff } M,x \nVdash \phi\\
+        M,x &\Vdash \phi \lor \psi &&\text{iff } M,x \vDash \phi \lor M,x \vDash \psi\\
+        M,x &\Vdash \textcolor{red}{\Box \phi} &&\text{iff } \exists V \in \tau(x) \forall y \in V : M,y \models \phi
+    \end{align*}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Modal logic and the logic $T$}
+  \begin{definition}
+    A modal logic is a set of modal formulas containing all propositional tautologies, closed under Substitution ($\frac{\phi(p_i)}{\phi(\psi)}$), Modus Ponens $(\frac{\phi, \phi \rightarrow \psi}{\psi})$. \newline \newline \pause
+    A modal logic is normal, if it contains $\Box (p \rightarrow q) \rightarrow (\Box p \rightarrow \Box q)$ (K) and is closed under Generalization $(\frac{\phi}{\Box \phi})$
+  \end{definition}
+
+  \begin{definition}
+      $T = K + \Box p \rightarrow p$
+  \end{definition}
+\end{frame}
+
+
+
+\begin{frame}
   \frametitle{Multimodal logic and product of frames}
   \begin{itemize}
     \item Mutlimodal logic allows us to reason about knowledge,time etc. simultaneously 
-    \item for example we can combine temporal and epistemic logic to reason about "when does the agent knows something" \pause
-    \item horizontal and vertical relation allows us to reason in one dimension% , for example we a fix time point and ask what does the agent knows at that time?
-    \item Let $F = (W, R_1)$ and $G = (V, R_2)$. We define the Kripke product on $W \times V$ as : 
-      \begin{align*}
+    \item for example we can combine temporal and epistemic logic to reason about "when does the agent knows something" \pause % consider the product of frames to interpret the formulas 
+    \item horizontal and vertical relation allows us to reason in one dimension \pause% , for example we a fix time point and ask what does the agent knows at that time?
+    \begin{definition}
+      Let $F = (W, R_1)$ and $G = (V, R_2)$. We define the Kripke product on $W \times V$ as : 
+        \begin{align*}
               (w,v)R_1'(w',v') &\text{ iff } wR_1w' \mbox{ and } v = v' \text{  (horizontal)} \\
               (w,v)R_2  '(w',v') &\text{ iff } w = w' \mbox{ and } vR_2v' \text{(vertical)}
-      \end{align*}
+      \end{align*}  
+    \end{definition}
+
+
+
 
     %\item Let $L_1$ and $L_2$ be two modal logics with one modality $\Box$. Then the fusion
     %is defined as: $$L_1 \otimes L_2 = K_2 + L_{1 \Box \rightarrow \Box_1} + L_{2 \Box \rightarrow \Box_2}$$
@@ -219,13 +250,32 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Fusion}
-  \begin{itemize}
-    \item we can also combine logics with fusion
-    \item Let $L_1$ and $L_2$ be modal logics with one modality $\Box$. Then the fusion is defined as:
-    $$ L_1 \otimes L_2 = K_2 + L_{1(\Box \rightarrow \Box_1)} L_{2(\Box \rightarrow \Box_2)} $$ 
+  \frametitle{Example and Fusion of logics} %It’s also possible to combine modal logics with fusion
+    %\centering
 
-  \end{itemize}
+    \begin{tikzpicture}
+       \node[draw, circle, inner sep=1.5pt] (A) at (0,0) {\small 3};
+       \node[draw, circle, inner sep=1.5pt] (B) at (0,-1) {$2$};
+       \node[draw, circle, inner sep=1.5pt] (C) at (0,-2) {$1$};
+       \node at (-0.5,0.5) {$R_1$};
+
+       \draw [blue,->] (C) -- (B);
+       \draw [blue, ->] (B) -- (A);
+
+       \node[draw, circle, inner sep=1.5pt] (D) at (4,-1) {$a$};
+       \node[draw, circle, inner sep=1.5pt] (E) at (5,-1) {$b$};
+
+       \draw [red, ->] (D) -- (E);
+    \end{tikzpicture}
+\pause
+
+    
+    \begin{definition}
+      Let $L_1$ and $L_2$ be modal logics with one modality $\Box$. The fusion is defined as:
+      $$ L_1 \otimes L_2 = K_2 + L_{1(\Box \rightarrow \Box_1)} L_{2(\Box \rightarrow \Box_2)} $$    
+    \end{definition}
+
+
 
 \end{frame}
 
