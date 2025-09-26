@@ -43,7 +43,7 @@
   \frametitle{Content}
 
   \begin{itemize}
-  \item Syntax and semantics
+  \item Syntax for the basic modal language and semantics
     \begin{itemize}
         \item Kripke frames
         \item Topological space
@@ -127,8 +127,8 @@
              A topological space is a pair $(X, \tau)$, where $\tau$ (called topology) is a collection of subsets of $X$ (open sets) such that: \pause
         \begin{itemize}
           \item $\emptyset$ and $X$ are open
-          \item the union of arbitrary collection of open sets is open
-          \item the intersection of finite collection of open sets is open
+          \item The union of arbitrary collection of open sets is open
+          \item The intersection of finite collection of open sets is open
         \end{itemize} \pause
           A topological model is a structure $M = (X,\tau, \upsilon)$ where $(X, \tau)$ is a topological space and $\upsilon$ a valuation of the form $\upsilon : Prop \rightarrow 2^X$  
     \end{definition}
@@ -173,8 +173,8 @@
 \begin{frame}
   \frametitle{Neighbourhood frames}
     \begin{itemize}
-      \item generalize Kripke semantics
-      \item captures non-normal modal logics
+      \item Generalize Kripke semantics
+      \item Captures non-normal modal logics
     \end{itemize}
 
     \pause
@@ -229,21 +229,14 @@
 
 
 \begin{frame}
-  \frametitle{Multimodal logic and product of frames}
+  \frametitle{Multimodal logic and Fusion}
   \begin{itemize}
-    \item Multimodal logic: simultaneously reasons about knowledge,time etc. 
-    \item combine temporal and epistemic logic to reason about "when does the agent knows something" \pause % consider the product of frames to interpret the formulas 
-    \item Product of frames: horizontal and vertical relation allows us to reason in one dimension \pause% , for example we a fix time point and ask what does the agent knows at that time?
-    \begin{definition}
-      Let $F = (W, R_1)$ and $G = (V, R_2)$. We define the Kripke product on $W \times V$ as : 
-        \begin{align*}
-              (w,v)R_1'(w',v') &\text{ iff } wR_1w' \mbox{ and } v = v' \text{  (horizontal)} \\
-              (w,v)R_2  '(w',v') &\text{ iff } w = w' \mbox{ and } vR_2v' \text{(vertical)}
-      \end{align*}  
+    \item Simultaneously reasons about knowledge,time etc. 
+    \item Example: combines temporal and epistemic logic to reason "when does the agent know something" \pause % consider the product of frames to interpret the formulas 
+       \begin{definition}
+      Let $L_1$ and $L_2$ be modal logics with one modality $\Box$. The fusion is defined as:
+      $$ L_1 \otimes L_2 = K_2 + L_{1(\Box \rightarrow \Box_1)} L_{2(\Box \rightarrow \Box_2)} $$    
     \end{definition}
-
-
-
 
     %\item Let $L_1$ and $L_2$ be two modal logics with one modality $\Box$. Then the fusion
     %is defined as: $$L_1 \otimes L_2 = K_2 + L_{1 \Box \rightarrow \Box_1} + L_{2 \Box \rightarrow \Box_2}$$
@@ -252,7 +245,22 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Example and Fusion of logics} %It’s also possible to combine modal logics with fusion
+  \frametitle{Product of frames}
+  \begin{itemize}
+      \item Reasoning on horizontal and vertical relations in one dimension \pause% , for example we a fix time point and ask what does the agent knows at that time?
+    \end{itemize}   
+    \begin{definition}
+      Let $F = (W, R_1)$ and $G = (V, R_2)$. We define the Kripke product on $W \times V$ as : 
+        \begin{align*}
+              (w,v)R_1'(w',v') &\text{ iff } wR_1w' \mbox{ and } v = v' \text{  (horizontal)} \\
+              (w,v)R_2  '(w',v') &\text{ iff } w = w' \mbox{ and } vR_2v' \text{(vertical)}
+      \end{align*}  
+
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Example} %It’s also possible to combine modal logics with fusion
     %\centering
 
     \begin{tikzpicture}
@@ -268,7 +276,8 @@
        \node[draw, circle, inner sep=1.5pt] (E) at (5,-1) {$b$};
 
        \draw [red, ->] (D) -- (E);
-       \node at (3.5,-0.5) {$R_2$}; \pause
+       \node at (3.5,-0.5) {$R_2$}; 
+       \pause
 
        \node[draw, circle, inner sep=1pt] (F) at (8,0) {\small 3,a};
        \node[draw, circle, inner sep=1pt] (G) at (8,-1) {\small 2,a};
@@ -289,14 +298,6 @@
 
 
     \end{tikzpicture}
-\pause
-
-    
-    \begin{definition}
-      Let $L_1$ and $L_2$ be modal logics with one modality $\Box$. The fusion is defined as:
-      $$ L_1 \otimes L_2 = K_2 + L_{1(\Box \rightarrow \Box_1)} L_{2(\Box \rightarrow \Box_2)} $$    
-    \end{definition}
-
 
 
 \end{frame}
@@ -319,30 +320,28 @@
       \]
 
     \end{description}    
+    $\tau_1$ (horizontal topology) is the set of all horizontally open sets and $\tau_2$ (vertical topology) the set of all vertically open sets.
   \end{definition}
 
-\begin{itemize}
-  \item $\tau_1$ (horizontal topology) is the set of all horizontally open sets and $\tau_2$ (vertical topology) the set of all vertically open sets.
-\end{itemize}
 
 
 
 \end{frame}
 
 \begin{frame}
-  \frametitle{Illustration, standard product}
+  \frametitle{Illustration, Standard product}
     \centering
     \includegraphics[width=0.55\textwidth]{Example4.pdf} \pause
   \begin{itemize}
-    \item we can also reason in both directions at once with the standard topology
-    \item we denote the basis of the standard topology as $\tau$ where 
+    \item Reasoning in both directions simultaneously with the standard topology
+    \item Basis of the standard topology is $\tau$ where 
     $$\tau = \{N \subseteq X \times Y \mid \exists U \in \chi \exists V \in \upsilon: N = U \times V\}$$  
   \end{itemize}
 
 \end{frame}
 
 \begin{frame}
-  \frametitle{horizontal, vertical and standard functions}
+  \frametitle{Horizontal, Vertical and Standard functions}
   \begin{definition}
     Let $\mathcal{X}$ = ($X$, $\tau_1$) and $\mathcal{Y}$ = ($Y$, $\tau_2$) be two n-frames. We define the full product as
       $$\mathcal{X} \times_n^+  \mathcal{Y} = (X \times Y, \tau_1', \tau_2', \tau) \text{ where}$$
@@ -373,9 +372,9 @@
 
   \begin{itemize}
     \item $T \otimes T \otimes T = K_3 + T_{\Box} + T_{(\Box \rightarrow \Box_1)} + T_{(\Box \rightarrow \Box_2)}$ is the logic with three modalities 
-      and $\Box p \rightarrow \Box_1 p \land \Box_2 p$ the interaction axiom \pause
-    \item we will only sketch the right to left inclusion
-    \item proof is splitted into two parts (ideas are from [1], [2])
+    \item $\Box p \rightarrow \Box_1 p \land \Box_2 p$ is the interaction axiom \pause
+    \item Sketch the inclusion from right to left
+    \item Proof is splitted into two parts (ideas are from [1], [2])
   \end{itemize}
 \end{frame}
 
@@ -392,10 +391,12 @@
     \begin{itemize}
       \item  Shown by \textcolor{red}{Sahlqvist Theorem}
     \end{itemize}
+    \pause
 
     \begin{claim}
       $T \otimes T \otimes T + \Box p \rightarrow \Box_1 p \land \Box_2 p$ has the finite model property
     \end{claim}
+    \pause
 
     \begin{itemize}
       \item Use \textcolor{red}{Filtration Theorem}
@@ -410,7 +411,7 @@
 \begin{frame}
   \frametitle{Sketch continue}
   \begin{itemize}
-    \item construct an infinite branching and infinite depth tree with three reflexive relations ($T_{\omega,\omega,\omega[rn]}$) \pause
+    \item Construct an infinite branching and infinite depth tree with three reflexive relations ($T_{\omega,\omega,\omega[rn]}$) \pause
   \end{itemize}
   \centering
   \includegraphics[width=0.73\textwidth]{Example7.pdf}
@@ -423,7 +424,7 @@
       Let $F = (W,R_1,R_2,...)$ and $F' = (W',R_1',R_2',...)$ be two frames. A bounded morphism $f: W \rightarrow W'$ can be illustrated as:  
       \includegraphics[width=0.73\textwidth]{Example8.pdf}
     
-    \vspace{1cm}
+    \vspace{0.5cm}
     \begin{tikzpicture}
       \node[draw, circle, minimum size=0.2cm] (A) at (0,0) {$w$};
       \node[draw, circle, minimum size=0.2cm] (B) at (0,-1.5) {$v$};
@@ -449,7 +450,7 @@
   \end{frame} 
 
 \begin{frame}
-  \frametitle{$T_{\omega,\omega,\omega[rn]}$ and a more detailed sketch}
+  \frametitle{Detailed sketch}
   \includegraphics[width=0.73\textwidth]{Example7.pdf} \newline\pause
 
   \begin{tikzpicture}[yshift=-0.15cm]
@@ -489,14 +490,14 @@
 
 
 \begin{frame}
-  \frametitle{Sketch continue}
+  \frametitle{Required components}
   $$Log(T_{\omega,\omega,\omega[rn]}) = T \otimes T \otimes T+ \Box p \rightarrow \Box_1 p \land \Box_2 p$$
   \begin{itemize}
-    \item we introduce a simpler version of $T_{\omega,\omega,\omega[rn]}$ which is $T_{\omega[rn]}$ \pause
-    \item construct a neighbourhood version of $T_{\omega[rn]}$ called $N_\omega(T_{\omega[rn]})$ 
-    \item we can show $T = Log(N_\omega(T_{\omega[rn]}))$ \pause
-    \item construct a bounded morphism $$N_\omega(T_{\omega[rn]}) \times_n^+ N_\omega(T_{\omega[rn]}) \rightarrow T_{\omega,\omega,\omega[rn]}$$
-    \item with some further steps we can conclude $$T \times_n^+ T \subseteq T \otimes T \otimes T + \Box p \rightarrow \Box_1 p \land \Box_2 p$$
+    \item Introduce $T_{\omega[rn]}$ a simpler version of $T_{\omega,\omega,\omega[rn]}$  \pause
+    \item Construct  $N_\omega(T_{\omega[rn]})$ the neighbourhood version of $T_{\omega[rn]}$
+    \item Show $T = Log(N_\omega(T_{\omega[rn]}))$ \pause
+    \item Construct a bounded morphism $$N_\omega(T_{\omega[rn]}) \times_n^+ N_\omega(T_{\omega[rn]}) \rightarrow T_{\omega,\omega,\omega[rn]}$$
+    \item With some further steps we can conclude $$T \times_n^+ T \subseteq T \otimes T \otimes T + \Box p \rightarrow \Box_1 p \land \Box_2 p$$
   \end{itemize}
 
 \end{frame} 
