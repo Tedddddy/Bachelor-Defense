@@ -459,10 +459,6 @@ INPUT .\TU_Logo_SW.pdf
 INPUT .\TU_Logo_SW.pdf
 INPUT .\TU_Logo_SW.pdf
 INPUT D:\Miktex\fonts\tfm\jknappen\ec\ecss0500.tfm
-INPUT D:\Miktex\tex\latex\opensans\ts1opensans-tlf.fd
-INPUT D:\Miktex\tex\latex\opensans\ts1opensans-tlf.fd
-INPUT D:\Miktex\tex\latex\opensans\ts1opensans-tlf.fd
-INPUT D:\Miktex\fonts\tfm\ascender\opensans\OpenSans-Regular-TS1-TLF.tfm
 INPUT D:\Miktex\fonts\tfm\ascender\opensans\OpenSans-Regular-T1-TLF.tfm
 INPUT .\TU_Logo_SW.pdf
 INPUT .\TU_Logo_SW.pdf
@@ -473,8 +469,8 @@ INPUT .\TU_Logo_SW.pdf
 INPUT D:\Miktex\fonts\tfm\ascender\opensans\OpenSans-Regular-T1-TLF.tfm
 INPUT D:\Miktex\fonts\tfm\jknappen\ec\ecss0800.tfm
 INPUT D:\Miktex\fonts\tfm\ascender\opensans\OpenSans-Regular-T1-TLF.tfm
-INPUT D:\Miktex\fonts\tfm\ascender\opensans\OpenSans-Bold-T1-TLF.tfm
-INPUT D:\Miktex\fonts\tfm\jknappen\ec\ecsx1728.tfm
+INPUT D:\Miktex\fonts\tfm\ascender\opensans\OpenSans-SemiBold-T1-TLF.tfm
+INPUT D:\Miktex\fonts\tfm\jknappen\ec\ecss1440.tfm
 INPUT D:\Miktex\fonts\tfm\ascender\opensans\OpenSans-Regular-T1-TLF.tfm
 INPUT .\TU_Logo_SW.pdf
 INPUT .\TU_Logo_SW.pdf
@@ -486,11 +482,11 @@ INPUT .\TU_Logo_SW.pdf
 INPUT .\TU_Logo_SW.pdf
 INPUT .\TU_Logo_SW.pdf
 INPUT .\TU_Logo_SW.pdf
+INPUT D:\Miktex\tex\latex\opensans\ts1opensans-tlf.fd
+INPUT D:\Miktex\tex\latex\opensans\ts1opensans-tlf.fd
+INPUT D:\Miktex\tex\latex\opensans\ts1opensans-tlf.fd
 INPUT D:\Miktex\fonts\tfm\ascender\opensans\OpenSans-Regular-TS1-TLF.tfm
 INPUT D:\Miktex\fonts\tfm\ascender\opensans\OpenSans-Regular-T1-TLF.tfm
-INPUT D:\Miktex\fonts\tfm\ascender\opensans\OpenSans-Regular-T1-TLF.tfm
-INPUT D:\Miktex\fonts\tfm\ascender\opensans\OpenSans-SemiBold-T1-TLF.tfm
-INPUT D:\Miktex\fonts\tfm\jknappen\ec\ecss1440.tfm
 INPUT .\TU_Logo_SW.pdf
 INPUT .\TU_Logo_SW.pdf
 INPUT .\TU_Logo_SW.pdf
@@ -504,8 +500,6 @@ INPUT D:\Miktex\fonts\vf\ascender\opensans\OpenSans-Regular-T1-TLF.vf
 INPUT D:\Miktex\fonts\tfm\ascender\opensans\OpenSans-Regular-T1-TLF--base.tfm
 INPUT D:\Miktex\fonts\vf\ascender\opensans\OpenSans-Regular-T1-TLF.vf
 INPUT D:\Miktex\fonts\tfm\ascender\opensans\OpenSans-Regular-T1-TLF--base.tfm
-INPUT D:\Miktex\fonts\vf\ascender\opensans\OpenSans-Regular-TS1-TLF.vf
-INPUT D:\Miktex\fonts\tfm\ascender\opensans\OpenSans-Regular-TS1-TLF--base.tfm
 INPUT .\TU_Logo_SW.pdf
 INPUT .\TU_Logo_SW.pdf
 INPUT .\TU_Logo_SW.pdf
@@ -851,8 +845,6 @@ INPUT C:\Users\Maik\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecss
 INPUT C:\Users\Maik\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecss0500.pk
 INPUT C:\Users\Maik\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecss1440.pk
 INPUT C:\Users\Maik\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecss1440.pk
-INPUT C:\Users\Maik\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecsx1728.pk
-INPUT C:\Users\Maik\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecsx1728.pk
 INPUT C:\Users\Maik\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecss0800.pk
 INPUT C:\Users\Maik\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecss0800.pk
 INPUT D:\Miktex\fonts\type1\ascender\opensans\OpenSans-Bold.pfb
