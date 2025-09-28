@@ -22,11 +22,11 @@
 \DeclareTextFontCommand{\textsb}{\sbseries}
 
 
-\title{TITLE}
+\title{Modal Logic of Products of Topological Spaces and Neighbourhood Frames}
 \author[© author]{Maik Thanh Nguyen}
 \institute{Technische Universit\"at Dresden}
-\datecity{CONFERENCE}
-\date{DATE}
+%\datecity{CONFERENCE}
+%\date{DATE}
 
 %\newtheorem{theorem}{Theorem}
 %\newtheorem{definition}{Definition}
@@ -53,7 +53,7 @@
     \begin{itemize}
       \item Multimodal logic and product of frames
       \item Horizontal and Vertical topology/functions
-      \item Product of logics and the logic T
+      \item Product of logics
     \end{itemize}
   \item Main result and ideas
   \end{itemize}
@@ -62,7 +62,7 @@
 \begin{frame}
   \frametitle{Basic modal language, Kripke frames and models}
   \begin{itemize}
-    \item Basic modal langauge extends classical propositional logic. Formally:
+    \item Basic modal language extends classical propositional logic. Formally:
   \end{itemize}
     
     \begin{definition}
@@ -80,7 +80,7 @@
       \item $R \subseteq W \times W $ is a binary relation
     \end{itemize}
 
-    A model is a pair $M = (F,R)$ where $V$ is a valuation and is of the form $V : Prop \rightarrow 2^W$
+    A model is a pair $M = (F,V)$ where $V$ is a valuation and is of the form $V : Prop \rightarrow 2^W$
 
 
     \end{definition}
@@ -93,7 +93,7 @@
     \item Let $\phi = \Box p$ and $M = (W,R,V)$ with $W = \{w_1,w_2,w_3,w_4,w_5\}$, $V(p) = \{w_3,w_4,w_5\}$ and $R = $
   \end{itemize}
   \centering
-  \includegraphics[width=0.55\textwidth]{Example1.pdf}
+  \includegraphics[width=1\textwidth]{Example1.pdf}
 \end{frame}
 
 
@@ -122,7 +122,7 @@
 \begin{frame}
   \frametitle{Topological space}
   \begin{itemize}
-    \item deals with open sets, describes which points are "nearby" \pause %truth is defined differently 
+    \item deals with open sets, topology \pause %truth is defined differently 
     \begin{definition}
              A topological space is a pair $(X, \tau)$, where $\tau$ (called topology) is a collection of subsets of $X$ (open sets) such that: \pause
         \begin{itemize}
@@ -139,8 +139,8 @@
   
     \frametitle{Example}
     \begin{itemize}
-      \item  Let $(X,\tau)$ be a topological space with 
-      $X = \{1,2,3\}$, $\tau = \{\emptyset, \{1\}, \{2\}, \{1,2\}, W\}$ ,$V(p) = \{1,2\}$  and $\phi = \Box p$
+      \item  Let $(X,\tau, \upsilon)$ be a topological model with 
+      $X = \{1,2,3\}$, $\tau = \{\emptyset, \{1\}, \{2\}, \{1,2\}, X\}$ ,$V(p) = \{1,2\}$  and $\phi = \Box p$
       \pause
     \end{itemize}
     \centering
@@ -186,7 +186,7 @@
 
 \begin{frame}
   \frametitle{Example}
-      Assume $\phi = \Box p$. Let $W = \{1,2,3\}$, $V(p) = \{1,2\}$ and 
+      Assume $\phi = \Box p$. Let $X = \{1,2,3\}$, $V(p) = \{1,2\}$ and 
     \[
             \tau(x) = 
             \begin{cases}
@@ -231,11 +231,11 @@
 \begin{frame}
   \frametitle{Multimodal logic and Fusion}
   \begin{itemize}
-    \item Simultaneously reasons about knowledge,time etc. 
-    \item Example: combines temporal and epistemic logic to reason "when does the agent know something" \pause % consider the product of frames to interpret the formulas 
+    \item Simultaneously reasoning about knowledge,time etc. 
+    %\item Example: combines temporal and epistemic logic to reason "when does the agent know something" \pause % consider the product of frames to interpret the formulas 
        \begin{definition}
       Let $L_1$ and $L_2$ be modal logics with one modality $\Box$. The fusion is defined as:
-      $$ L_1 \otimes L_2 = K_2 + L_{1(\Box \rightarrow \Box_1)} L_{2(\Box \rightarrow \Box_2)} $$    
+      $$ L_1 \otimes L_2 = K_2 + L_{1(\Box \rightarrow \Box_1)} + L_{2(\Box \rightarrow \Box_2)} $$    
     \end{definition}
 
     %\item Let $L_1$ and $L_2$ be two modal logics with one modality $\Box$. Then the fusion
@@ -247,7 +247,7 @@
 \begin{frame}
   \frametitle{Product of frames}
   \begin{itemize}
-      \item Reasoning on horizontal and vertical relations in one dimension \pause% , for example we a fix time point and ask what does the agent knows at that time?
+      \item Reasoning in one dimension via horizontal and vertical relations \pause% , for example we a fix time point and ask what does the agent knows at that time?
     \end{itemize}   
     \begin{definition}
       Let $F = (W, R_1)$ and $G = (V, R_2)$. We define the Kripke product on $W \times V$ as : 
@@ -264,78 +264,123 @@
     %\centering
 
     \begin{tikzpicture}
-       \node[draw, circle, inner sep=1.5pt] (A) at (0,0) {\small 3};
-       \node[draw, circle, inner sep=1.5pt] (B) at (0,-1) {$2$};
-       \node[draw, circle, inner sep=1.5pt] (C) at (0,-2) {$1$};
+       \node[draw, circle, inner sep=1.5pt] (A) at (1,-0.6) {\small 3};
+       \node[draw, circle, inner sep=1.5pt] (B) at (0,-0.6) {$2$};
+       \node[draw, circle, inner sep=1.5pt] (C) at (-1,-0.6) {$1$};
        \node at (-0.5,0.5) {$R_1$};
 
        \draw [blue,->] (C) -- (B);
        \draw [blue, ->] (B) -- (A);
 
-       \node[draw, circle, inner sep=1.5pt] (D) at (4,-1) {$a$};
-       \node[draw, circle, inner sep=1.5pt] (E) at (5,-1) {$b$};
+       \node[draw, circle, inner sep=1.5pt] (D) at (4,0) {$a$};
+       \node[draw, circle, inner sep=1.5pt] (E) at (4,-1) {$b$};
 
        \draw [red, ->] (D) -- (E);
-       \node at (3.5,-0.5) {$R_2$}; 
-       \pause
+       \node at (3.5,0.5) {$R_2$}; \pause
+       
 
-       \node[draw, circle, inner sep=1pt] (F) at (8,0) {\small 3,a};
-       \node[draw, circle, inner sep=1pt] (G) at (8,-1) {\small 2,a};
-       \node[draw, circle, inner sep=1pt] (H) at (8,-2) {\small 1,a};
+       \node[draw, circle, inner sep=1pt] (F) at (8,0) {\small 1,a};
+       \node[draw, circle, inner sep=1pt] (G) at (8,-1) {\small 1,b};
 
-       \node[draw, circle, inner sep=1pt] (I) at (9,0) {\small 3,b};
+
+       \node[draw, circle, inner sep=1pt] (I) at (9,0) {\small 2,a};
        \node[draw, circle, inner sep=1pt] (J) at (9,-1) {\small 2,b};
-       \node[draw, circle, inner sep=1pt] (K) at (9,-2) {\small 1,b};
 
-       \draw [blue,->] (H) -- (G);
-       \draw [blue,->] (G) -- (F);
-       \draw [blue,->] (K) -- (J);
-       \draw [blue,->] (J) -- (I);
 
-       \draw [red,->] (F) -- (I);
-       \draw [red,->] (G) -- (J);
-       \draw [red,->] (H) -- (K);
+       \node[draw, circle, inner sep=1pt] (L) at (10,0) {\small 3,a};
+       \node[draw, circle, inner sep=1pt] (N) at (10,-1) {\small 3,b};
+
+       \draw [blue,->] (F) -- (I);
+       \draw [blue,->] (I) -- (L);
+       \draw [blue,->] (G) -- (J);
+       \draw [blue,->] (J) -- (N);
+
+       \draw [red,->] (F) -- (G);
+       \draw [red,->] (I) -- (J);
+       \draw [red,->] (L) -- (N);
 
 
     \end{tikzpicture}
+      
+\end{frame}
 
+
+\begin{frame}
+  \frametitle{Horizontal and Vertical topology}  
+  
+  \begin{definition}
+    Let \( \mathcal{X} = (X, \chi) \) and \( \mathcal{Y} = (Y, \upsilon) \) be topological spaces and \( N \subseteq X \times Y \) \newline
+
+    \begin{description}
+       \item[Horizontally open:] \(N\) is horizontally open iff 
+      $$
+        \forall (x, y) \in N\; \exists U \in \chi \text{ such that } x \in U \text{ and } U \times \{y\} \subseteq N.
+      $$
+    \end{description}
+     $\tau_1$ (horizontal topology) is the set of all horizontally open sets
+  \end{definition}
+
+  \vspace{0.5cm}
+  \centering
+
+  \begin{tikzpicture}
+    \draw (0,0) rectangle (3,2);
+    \draw[red, thick] (1.5, 1.1) -- (1, 1.1);
+    \draw[red, thick] (0.9, 1.2) -- (0.5, 1.2);
+    \draw[red, thick] (1.4, 1.4) -- (1.8, 1.4);
+    \draw[red, thick] (1.4, 1.8) -- (1.8, 1.8);
+    \draw[red, thick] (0.6, 1.8) -- (1, 1.8);
+    \draw[red, thick] (0.8, 0.5) -- (1.4, 0.5);
+    \draw[red, thick] (1.7, 1.1) -- (2.4, 1.1);
+    \draw[red, thick] (1.5, 0.7) -- (2.1, 0.7);
+    % Label below
+   % \node at (1.5,-0.3) {horizontally};
+
+    \end{tikzpicture}
 
 \end{frame}
 
 \begin{frame}
-  \frametitle{Horizontal and Vertical topology}
-   % \item in topological space, horizontal and vertical can be also defined \pause
-  \begin{definition}
-      Let \( \mathcal{X} = (X, \chi) \) and \( \mathcal{Y} = (Y, \upsilon) \) be topological spaces and \( N \subseteq X \times Y \) \newline
+    \frametitle{Horizontal and Vertical topology}
+    \begin{definition}
+       Let \( \mathcal{X} = (X, \chi) \) and \( \mathcal{Y} = (Y, \upsilon) \) be topological spaces and \( N \subseteq X \times Y \) \newline
 
-    \begin{description}
-      \item[Horizontally open:] \(N\) is horizontally open iff 
-      \[
-        \forall (x, y) \in N\; \exists U \in \chi \text{ such that } x \in U \text{ and } U \times \{y\} \subseteq N.
-      \]
-
+      \begin{description}
+        
+        
       \item[Vertically open:] \(N\) is vertically open iff 
       \[
         \forall (x, y) \in N\; \exists V \in \upsilon \text{ such that } y \in V \text{ and } \{x\} \times V \subseteq N.
       \]
 
-    \end{description}    
-    $\tau_1$ (horizontal topology) is the set of all horizontally open sets and $\tau_2$ (vertical topology) the set of all vertically open sets.
-  \end{definition}
+    \end{description} 
+    $\tau_2$ (vertical topology) is the set of all vertically open sets
+      \end{definition}
 
+      \vspace{0.5cm}
+      \centering
+    \begin{tikzpicture}
+    \draw (0,0) rectangle (3,2);
+    \draw[red, thick] (1,1.5) -- (1,1);
+    \draw[red, thick] (1.2, 0.9) -- (1.2, 0.5);
+    \draw[red, thick] (1.4, 1.4) -- (1.4, 1.8);
+    \draw[red, thick] (1.9, 1.4) -- (1.9, 1.8);
+    \draw[red, thick] (1.9, 0.6) -- (1.9, 1);
+    \draw[red, thick] (0.5, 0.8) -- (0.5, 1.4);
+    \draw[red, thick] (2.3, 0.2) -- (2.3, 0.9 );
+    \draw[red, thick] (2.6, 1.1) -- (2.6, 1.8 );
+    \end{tikzpicture}
 
-
+    
 
 \end{frame}
 
 \begin{frame}
-  \frametitle{Illustration, Standard product}
-    \centering
-    \includegraphics[width=0.55\textwidth]{Example4.pdf} \pause
+  \frametitle{Standard topology}
+
   \begin{itemize}
-    \item Reasoning in both directions simultaneously with the standard topology
     \item Basis of the standard topology is $\tau$ where 
-    $$\tau = \{N \subseteq X \times Y \mid \exists U \in \chi \exists V \in \upsilon: N = U \times V\}$$  
+    $$\tau = \{U \times V  \mid  U \in \chi  V \in \upsilon\}$$  
   \end{itemize}
 
 \end{frame}
@@ -347,7 +392,7 @@
       $$\mathcal{X} \times_n^+  \mathcal{Y} = (X \times Y, \tau_1', \tau_2', \tau) \text{ where}$$
       $$ \tau_1'(x,y) = \{ U \subseteq \mbox{X} \times \mbox{Y} \mid \exists V \in \tau_1(x) : V \times  \{ y \} \subseteq U \}$$
       $$ \tau_2'(x,y) = \{ U \subseteq \mbox{X} \times \mbox{Y} \mid \exists V \in \tau_2(y) : \{ x \} \times V \subseteq U \}$$
-          $$ \tau(x,y) = \{ U \subseteq \mbox{X} \times \mbox{Y} \mid \exists W \in \tau_1(x) \, \exists V \in \tau_2(y) : W \times V \subseteq U \}$$      
+          $$ \tau(x,y) = \{ U \mid \exists W \in \tau_1(x) \, \exists V \in \tau_2(y) : W \times V \subseteq U \}$$      
   \end{definition}
 
 \end{frame}
@@ -363,12 +408,28 @@
 
 \end{frame}
 
-\begin{frame}
-  \frametitle{Main Research Question}
-    \begin{theorem}
-      $$T \otimes T \otimes T + \Box p \rightarrow \Box_1 p \land \Box_2 p = T \times_n^+ T$$
-          \end{theorem}\pause
 
+\begingroup
+  \setbeamertemplate{logo}{} % remove TU Dresden logo
+  \setbeamercolor{customfoot}{bg=gray!12,fg=black}
+
+  \setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.8ex,dp=1.1ex]{customfoot}%
+      \hspace{1em}\tiny
+      [1] Johan van B., Guram B., Balder ten C., Darko S. (2012) \quad
+      [2] Andrei K. (2012)
+      \hfill Page 20\hspace{2ex}%
+    \end{beamercolorbox}%
+  }
+
+  \begin{frame}
+    \frametitle{Main Research Question}
+    \begin{theorem}
+      $$T \otimes T \otimes T + \Box p \rightarrow \Box_1 p \land \Box_2 p
+        = T \times_n^+ T$$
+    \end{theorem} \pause
+
+    \vspace{-0.25cm}
 
   \begin{itemize}
     \item $T \otimes T \otimes T = K_3 + T_{\Box} + T_{(\Box \rightarrow \Box_1)} + T_{(\Box \rightarrow \Box_2)}$ is the logic with three modalities 
@@ -376,7 +437,10 @@
     \item Sketch the inclusion from right to left
     \item Proof is splitted into two parts (ideas are from [1], [2])
   \end{itemize}
-\end{frame}
+  \end{frame}
+\endgroup
+
+
 
 \begin{frame}
   \frametitle{Sketch of the main ideas}
@@ -429,7 +493,9 @@
       \node[draw, circle, minimum size=0.2cm] (A) at (0,0) {$w$};
       \node[draw, circle, minimum size=0.2cm] (B) at (0,-1.5) {$v$};
       \node[draw, circle, font=\tiny\itshape] (C) at (1.8,0) {$f(w)$};
-      \node[draw, circle, font=\tiny\itshape] (D) at (1.8,-1.5){$f(v)$};
+      \node[draw, circle,inner sep=4.5pt] (D) at (1.8,-1.5){};
+
+      
       
 
       \draw [->] (C) -- (D);

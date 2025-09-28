@@ -1,6 +1,11 @@
-\documentclass[tikz,border=2mm]{standalone}
-\usepackage{tikz}
-
+\documentclass[hyperref={pdfpagelabels=false},t,10pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[default,scale=.95]{opensans}
+\usepackage[most]{tcolorbox}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
 \begin{document}
 \begin{tikzpicture}[scale=1]
     % Nodes
@@ -15,6 +20,6 @@
     \draw [->,blue ] (2.3,0) -- (3.7,0);
     \draw [->,blue ] (2.3,0) -- (3.7,1.8);
     \draw [->,blue] (2.3,0) -- (3.7,-1.8);
-    \node at (6,0) {$\phi$ is true at $w_2$};
+    \node at (6,0) {$M,w_2 \Vdash \phi$};
 \end{tikzpicture}
 \end{document}

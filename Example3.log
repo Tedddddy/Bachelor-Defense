@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.14)  13 SEP 2025 02:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.14)  26 SEP 2025 22:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -514,7 +514,7 @@ Package hyperref Info: Link coloring OFF on input line 14.
 
 
 Non-PDF special ignored!
-<special> papersize=238.49307pt,149.87556pt
+<special> papersize=224.57637pt,149.87556pt
 {C:/Users/Maik/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (Example3.aux)
  ***********
 LaTeX2e <2025-06-01>
@@ -526,13 +526,13 @@ Package rerunfilecheck Info: File `Example3.out' has not changed.
 Here is how much of TeX's memory you used:
  21247 strings out of 468224
  384901 string characters out of 5449790
- 765910 words of memory out of 5000000
+ 765911 words of memory out of 5000000
  49445 multiletter control sequences out of 15000+600000
  626825 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  117i,7n,121p,580b,546s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <D:/Miktex/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on Example3.pdf (1 page, 16265 bytes).
+Output written on Example3.pdf (1 page, 14989 bytes).
 PDF statistics:
  19 PDF objects out of 1000 (max. 8388607)
  2 named destinations out of 1000 (max. 500000)
